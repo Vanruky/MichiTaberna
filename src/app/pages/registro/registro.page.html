@@ -1,0 +1,100 @@
+<ion-header class="header-animado">
+  <ion-toolbar class="header-toolbar">
+    <div class="header-card">
+      <ion-icon name="paw" class="icono-animado"></ion-icon>
+      <span class="header-title texto-animado">MichiTaberna</span>
+      <ion-icon name="beer" class="icono-animado"></ion-icon>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding content-wrapper" scrollEvents="true">
+
+  <div class="info-section">
+
+    <span>Meramente Prrrrrrfecto</span>
+
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Datos de cuenta</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-item class="input-slide">
+        <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+        <ion-label position="stacked">Usuario</ion-label><br>
+        <ion-input [(ngModel)]="usuario" required minlength="3" maxlength="8" clearInput></ion-input>
+      </ion-item>
+
+      <ion-item class="input-slide">
+        <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+        <ion-label position="stacked">Contraseña</ion-label><br>
+        <ion-input [(ngModel)]="contrasena" type="password" required maxlength="4" inputmode="numeric" clearInput></ion-input>
+      </ion-item>
+
+      <ion-item class="input-slide">
+        <ion-icon slot="start" name="shield-checkmark-outline"></ion-icon>
+        <ion-label position="stacked">Confirmar contraseña</ion-label><br>
+        <ion-input [(ngModel)]="confirmarContrasena" type="password" required maxlength="4" inputmode="numeric" clearInput></ion-input>
+      </ion-item>
+
+      <ion-item class="input-slide">
+        <ion-icon slot="start" name="mail-outline"></ion-icon>
+        <ion-label position="stacked">Correo electrónico</ion-label><br>
+        <ion-input [(ngModel)]="correo" type="email" required placeholder="xxxx@gmail.com" clearInput></ion-input>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Información personal</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-item class="input-slide">
+        <ion-icon slot="start" name="person-outline"></ion-icon>
+        <ion-label position="stacked">Nombre</ion-label><br>
+        <ion-input [(ngModel)]="nombre" required clearInput></ion-input>
+      </ion-item>
+
+      <ion-item class="input-slide">
+        <ion-icon slot="start" name="person-outline"></ion-icon>
+        <ion-label position="stacked">Apellido</ion-label><br>
+        <ion-input [(ngModel)]="apellido" required clearInput></ion-input>
+      </ion-item>
+
+      <ion-item class="input-slide">
+        <ion-icon slot="start" name="call-outline"></ion-icon>
+        <ion-label position="stacked">Teléfono</ion-label><br>
+        <ion-input [(ngModel)]="telefono"
+                  (ionInput)="formatearTelefono($event)"
+                  type="tel"
+                  maxlength="15"
+                  clearInput>
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="input-slide">
+        <ion-icon slot="start" name="location-outline"></ion-icon>
+        <ion-label position="stacked">Dirección completa</ion-label><br>
+        <ion-textarea [(ngModel)]="direccion" autoGrow="true" placeholder="Calle, número, depto, comuna, región" clearInput></ion-textarea>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+  <div style="display: flex; gap: 10px; margin-top: 16px;">
+    <ion-button expand="block" style="flex: 1;" (click)="registrar()">
+      Registrar
+    </ion-button>
+
+    <ion-button expand="block" color="danger" style="flex: 1;" (click)="volverLogin()">
+      Volver al login
+    </ion-button>
+  </div>
+
+</ion-content>

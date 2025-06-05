@@ -1,0 +1,7 @@
+{
+  "name": "MichiTaberna",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

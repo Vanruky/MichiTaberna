@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar class="header-toolbar">
+    <div class="header-card">
+      <ion-icon name="paw"></ion-icon>
+      <span class="header-title">MichiTaberna</span>
+      <ion-icon name="beer"></ion-icon>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding content-wrapper">
+
+  <div class="info-section">
+
+    <span>Meramente Prrrrrrfecto</span>
+
+  </div>
+
+  <div style="margin: 2rem 0;"></div>
+
+  <ion-item class="input-slide">
+    <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+    <ion-label position="stacked">Usuario</ion-label><br>
+    <ion-input
+      [(ngModel)]="usuario"
+      minlength="3"
+      maxlength="8"
+      required
+      pattern="[a-zA-Z0-9]+"
+      clearInput="true"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item class="input-slide">
+    <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+    <ion-label position="stacked">Contraseña</ion-label><br>
+    <ion-input
+      [(ngModel)]="contrasena"
+      type="password"
+      minlength="4"
+      maxlength="4"
+      required
+      inputmode="numeric"
+      pattern="\\d{4}"
+      clearInput="true"
+    ></ion-input>
+  </ion-item>
+
+  <div style="margin: 2rem 0;"></div>
+
+  <ion-button expand="block" (click)="ingresar()">Ingresar</ion-button>
+
+  <div class="registro-link" (click)="irRegistro()">
+    <ion-icon name="sparkles-outline"></ion-icon>
+    <span><u>Crea tu cuenta gratis</u></span>
+    <ion-icon name="rocket-outline"></ion-icon>
+  </div>
+
+</ion-content>
+
