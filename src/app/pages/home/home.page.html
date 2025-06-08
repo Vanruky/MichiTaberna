@@ -1,7 +1,7 @@
 <ion-header class="header-animado">
   <ion-toolbar class="header-toolbar">
     <div class="header-card">
-      <ion-icon name="cat" class="icono-animado"></ion-icon>
+      <ion-icon name="paw" class="icono-animado"></ion-icon>
       <span class="header-title texto-animado">MichiTaberna</span>
       <ion-icon name="beer" class="icono-animado"></ion-icon>
     </div>
@@ -9,70 +9,83 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <div class="main-content">
+    <div class="contenido-izquierda">
+      <div class="info-section glow-text">
+        Meramente Prrrrrrfecto
+      </div>
 
-  <div class="info-section">
-    Meramente Prrrrrrfecto <ion-icon name="paw-outline"></ion-icon> <ion-icon name="infinite-outline"></ion-icon>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" class="ion-text-center boton-item">
+            <ion-button fill="clear" (click)="abrirMisDatos()">
+              <ion-icon name="person-circle-outline" size="large"></ion-icon>
+            </ion-button>
+            <p>Mis datos</p>
+          </ion-col>
+
+          <ion-col size="6" class="ion-text-center boton-item">
+            <ion-button fill="clear" (click)="irCatalogo()">
+              <ion-icon name="book-outline" size="large"></ion-icon>
+            </ion-button>
+            <p>Catálogo</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6" class="ion-text-center boton-item">
+            <ion-button fill="clear" disabled>
+              <ion-icon name="card-outline" size="large"></ion-icon>
+            </ion-button>
+            <p>Mis tarjetas</p>
+          </ion-col>
+
+          <ion-col size="6" class="ion-text-center boton-item">
+            <ion-button fill="clear" disabled>
+              <ion-icon name="receipt-outline" size="large"></ion-icon>
+            </ion-button>
+            <p>Mis pedidos</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6" class="ion-text-center boton-item">
+            <ion-button fill="clear" disabled>
+              <ion-icon name="chatbubble-ellipses-outline" size="large"></ion-icon>
+            </ion-button>
+            <p>Reseñas</p>
+          </ion-col>
+
+          <ion-col size="6" class="ion-text-center boton-item">
+            <ion-button fill="clear" disabled>
+              <ion-icon name="settings-outline" size="large"></ion-icon>
+            </ion-button>
+            <p>Ajustes</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6" offset="3" class="ion-text-center boton-item">
+            <ion-button fill="clear" (click)="irNosotros()">
+              <ion-icon name="people-outline" size="large"></ion-icon>
+            </ion-button>
+            <p>Nosotros</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
   </div>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6" class="ion-text-center boton-item">
-        <ion-button fill="clear" (click)="abrirMisDatos()">
-          <ion-icon name="person-circle-outline" size="large"></ion-icon>
-        </ion-button>
-        <p>Mis datos</p>
-      </ion-col>
+  <div class="cerrar-sesion-container">
+    <ion-button class="cerrar-sesion-btn" color="danger" (click)="cerrarSesion()">
+      Cerrar sesión
+    </ion-button>
+  </div>
 
-      <ion-col size="6" class="ion-text-center boton-item">
-        <ion-button fill="clear" (click)="irCatalogo()">
-          <ion-icon name="book-outline" size="large"></ion-icon>
-        </ion-button>
-        <p>Catálogo</p>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col size="6" class="ion-text-center boton-item">
-        <ion-button fill="clear" disabled>
-          <ion-icon name="card-outline" size="large"></ion-icon>
-        </ion-button>
-        <p>Mis tarjetas</p>
-      </ion-col>
-
-      <ion-col size="6" class="ion-text-center boton-item">
-        <ion-button fill="clear" disabled>
-          <ion-icon name="receipt-outline" size="large"></ion-icon>
-        </ion-button>
-        <p>Mis pedidos</p>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col size="6" class="ion-text-center boton-item">
-        <ion-button fill="clear" (click)="irResenas()">
-          <ion-icon name="chatbubble-ellipses-outline" size="large"></ion-icon>
-        </ion-button>
-        <p>Reseñas</p>
-      </ion-col>
-
-      <ion-col size="6" class="ion-text-center boton-item">
-        <ion-button fill="clear" disabled>
-          <ion-icon name="settings-outline" size="large"></ion-icon>
-        </ion-button>
-        <p>Ajustes</p>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-button expand="block" color="danger" (click)="cerrarSesion()">
-    Cerrar sesión
-  </ion-button>
-
-  <!-- Modal para mostrar los datos -->
   <ion-modal [isOpen]="mostrarModal" (didDismiss)="cerrarModal()">
     <ng-template>
       <ion-header>
-        <ion-toolbar color="primary">
+        <ion-toolbar class="modal-toolbar">
           <ion-title>Mis Datos</ion-title>
           <ion-buttons slot="end">
             <ion-button (click)="cerrarModal()">
@@ -81,7 +94,8 @@
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
-      <ion-content class="ion-padding">
+
+      <ion-content class="ion-padding modal-content">
         <p><strong>Usuario:</strong> {{ usuario.usuario }}</p>
         <p><strong>Contraseña:</strong> ****</p>
         <p><strong>Correo:</strong> {{ usuario.correo }}</p>
@@ -91,5 +105,4 @@
       </ion-content>
     </ng-template>
   </ion-modal>
-
 </ion-content>

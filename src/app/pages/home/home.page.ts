@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -25,10 +25,9 @@ export class HomePage implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private alertController: AlertController
-  ) { }
+  ) {}
 
   ngOnInit() {
-    // Capturamos datos que vienen del login con NavigationExtras.state
     if (this.router.getCurrentNavigation()?.extras.state) {
       const state = this.router.getCurrentNavigation()?.extras.state as any;
       this.usuario.usuario = state.usuario || '';
@@ -52,8 +51,8 @@ export class HomePage implements OnInit {
     this.router.navigate(['/catalogo']);
   }
 
-  irResenas() {
-    this.router.navigate(['/reviews']);
+  irNosotros() {
+    this.router.navigate(['/michitaberna']);
   }
 
   async cerrarSesion() {

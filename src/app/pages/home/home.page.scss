@@ -1,10 +1,50 @@
+:host {
+  --ion-background-color: #d6c1e1;
+  --ion-text-color: #5a3d66;
+}
+
 ion-content {
   --background: var(--ion-background-color);
   color: var(--ion-text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  padding-bottom: 2rem;
+}
+
+.main-content {
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.contenido-izquierda {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  width: 100%;
+}
+
+.info-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--ion-text-color);
+  margin: 1.5rem 0;
+  text-align: center; 
+}
+
+ion-grid {
+  width: 100%;
 }
 
 .header-toolbar {
-  --background: white;
+  --background: var(--ion-background-color);
   box-shadow: none;
   display: flex;
   justify-content: center;
@@ -23,41 +63,17 @@ ion-content {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  color: var(--ion-text-color);
-  font-family: "Delius", cursive;
-}
 
-.header-card ion-icon {
-  font-size: 2.5rem;
-  color: var(--ion-text-color);
-  animation: girarIcono 1.5s ease-in-out infinite alternate;
-}
+  ion-icon {
+    font-size: 2.5rem;
+    color: var(--ion-text-color);
+  }
 
-.header-title {
-  font-size: 2.4rem;
-  font-weight: 800;
-  color: var(--ion-text-color);
-  animation: reboteTexto 1s ease-out;
-}
-
-.info-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--ion-text-color);
-  margin: 1.5rem 0;
-}
-
-.info-section ion-icon {
-  color: var(--ion-text-color);
-  font-size: 1.6rem;
-}
-
-.boton-item ion-button {
-  --color: var(--ion-text-color);
+  .header-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--ion-text-color);
+  }
 }
 
 .boton-item p {
@@ -67,7 +83,6 @@ ion-content {
 }
 
 ion-button[fill="clear"] {
-  --background: transparent;
   --color: var(--ion-text-color);
 }
 
@@ -80,34 +95,96 @@ ion-button[disabled] {
   --color: #b0a9b8;
 }
 
-ion-button.expand-block {
-  margin-top: 2rem;
+.cerrar-sesion-container {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 2rem;
 }
 
-/* Animaciones */
+.cerrar-sesion-btn {
+  width: auto;
+  padding: 0 1.5rem;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+ion-modal {
+  --background: #f5e9fc;
+  --border-radius: 16px;             
+  --margin-top: 20px;
+  --margin-bottom: 20px;
+  --margin-start: 20px;
+  --margin-end: 20px;
+  box-shadow: 0 8px 24px rgba(90, 61, 102, 0.25);
+}
+
+.modal-toolbar {
+  --background: #7e5fa5; 
+  --color: #f0e6fa;  
+  font-weight: 700;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.modal-toolbar ion-button {
+  --color: #f0e6fa;
+  font-size: 1.6rem;
+}
+
+.modal-toolbar ion-icon {
+  vertical-align: middle;
+}
+
+.modal-toolbar ion-title {
+  color: #f0e6fa;
+}
+
+.modal-content {
+  background-color: #f5e9fc;
+  border-radius: 16px;
+  color: #5a3d66 !important;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-weight: 600;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.modal-content, 
+.modal-content p, 
+.modal-content span, 
+.modal-content div, 
+.modal-content ion-text {
+  color: #5a3d66 !important;
+}
+
+ion-content.modal-content {
+  --background: transparent;
+  color: #5a3d66 !important;
+  --color: #5a3d66 !important;
+  padding: 0;
+}
 
 @keyframes girarIcono {
-  0% {
-    transform: rotate(-20deg);
-  }
-  50% {
-    transform: rotate(20deg);
-  }
-  100% {
-    transform: rotate(0);
-  }
+  0% { transform: rotate(-20deg); }
+  50% { transform: rotate(20deg); }
+  100% { transform: rotate(0); }
 }
 
 @keyframes reboteTexto {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  60% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(0.8); opacity: 0; }
+  60% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes glow {
+  0%   { text-shadow: 0 0 4px #fff; }
+  50%  { text-shadow: 0 0 12px #c68ee0; }
+  100% { text-shadow: 0 0 4px #fff; }
+}
+
+.glow-text {
+  animation: glow 2.5s ease-in-out infinite;
 }

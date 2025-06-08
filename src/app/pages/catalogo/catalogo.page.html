@@ -1,13 +1,53 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>catalogo</ion-title>
+<ion-header class="header-animado">
+  <ion-toolbar class="header-toolbar">
+    <div class="header-card">
+      <ion-icon name="paw" class="icono-animado"></ion-icon>
+      <span class="header-title texto-animado">MichiTaberna</span>
+      <ion-icon name="beer" class="icono-animado"></ion-icon>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">catalogo</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <div class="main-content">
+    <div class="contenido-izquierda">
+      <div class="info-section glow-text">Meramente Prrrrrrfecto</div>
+
+      <div class="categorias-menu">
+        <ion-chip>Artículos de papelería</ion-chip>
+        <ion-chip>Artículos de cocina</ion-chip>
+
+        <ion-chip class="decoraciones-activa">Decoraciones</ion-chip>
+        <div class="iconos-navegacion">
+          <ion-icon name="home-outline" (click)="irHome()"></ion-icon>
+          <ion-icon name="cart-outline"></ion-icon>
+        </div>
+      </div>
+
+      <ion-list>
+        <ion-item *ngFor="let producto of productos">
+          <ion-thumbnail slot="start">
+            <img [src]="producto.imagen" alt="Imagen producto" />
+          </ion-thumbnail>
+
+          <ion-label>
+            <h2>{{ producto.titulo }}</h2>
+            <p>{{ producto.descripcion }}</p>
+            <p><strong>${{ producto.precio | number:'1.0-0' }}</strong></p>
+
+            <div class="acciones-producto">
+              <ion-button size="small" fill="outline" (click)="comprar(producto)">Comprar</ion-button>
+              <ion-button size="small" fill="solid" color="secondary" (click)="agregarCarrito(producto)">Agregar</ion-button>
+              <ion-icon
+                [name]="producto.meGusta ? 'heart' : 'heart-outline'"
+                class="like-icon"
+                [class.active]="producto.meGusta"
+                (click)="toggleLike(producto)">
+              </ion-icon>
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
 </ion-content>
