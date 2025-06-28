@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -32,7 +33,14 @@ export class CatalogoPage {
     }
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
+
+  async ionViewWillEnter() {
+    const logged = await this.authService.isLoggedIn();
+    if (!logged) {
+      this.router.navigate(['/login']);
+    }
+  }
 
   irHome() {
     this.router.navigate(['/home']);

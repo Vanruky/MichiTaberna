@@ -1,23 +1,33 @@
 import { Component } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  standalone: false, 
 })
 export class LoginPage {
   usuario: string = '';
   contrasena: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
-  ingresar() {
+  async ionViewWillEnter() {
+    const logged = await this.authService.isLoggedIn();
+    if (logged) {
+      this.router.navigate(['/home']);
+    }
+  }
+
+  async ingresar() {
     const validUser = /^[a-zA-Z0-9]{3,8}$/.test(this.usuario);
     const validPass = /^\d{4}$/.test(this.contrasena);
 
     if (validUser && validPass) {
+      // Simular token de sesión
+      await this.authService.login('fake-token-123');
+
       const extras: NavigationExtras = {
         state: {
           usuario: this.usuario
