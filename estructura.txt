@@ -1,0 +1,68 @@
+Listado de rutas de carpetas
+El número de serie del volumen es BA03-AE50
+C:\USERS\ROSEV\DOCUMENTS\GITHUB\MICHITABERNA\SRC\APP
+¦   app-routing.module.ts
+¦   app.component.html
+¦   app.component.scss
+¦   app.component.spec.ts
+¦   app.component.ts
+¦   app.module.ts
+¦   
++---guards
+¦       auth.guard.spec.ts
+¦       auth.guard.ts
+¦       
++---pages
+¦   +---catalogo
+¦   ¦       catalogo-routing.module.ts
+¦   ¦       catalogo.module.ts
+¦   ¦       catalogo.page.html
+¦   ¦       catalogo.page.scss
+¦   ¦       catalogo.page.spec.ts
+¦   ¦       catalogo.page.ts
+¦   ¦       
+¦   +---home
+¦   ¦       home-routing.module.ts
+¦   ¦       home.module.ts
+¦   ¦       home.page.html
+¦   ¦       home.page.scss
+¦   ¦       home.page.spec.ts
+¦   ¦       home.page.ts
+¦   ¦       
+¦   +---login
+¦   ¦       login-routing.module.ts
+¦   ¦       login.module.ts
+¦   ¦       login.page.html
+¦   ¦       login.page.scss
+¦   ¦       login.page.spec.ts
+¦   ¦       login.page.ts
+¦   ¦       
+¦   +---michitaberna
+¦   ¦       michitaberna-routing.module.ts
+¦   ¦       michitaberna.module.ts
+¦   ¦       michitaberna.page.html
+¦   ¦       michitaberna.page.scss
+¦   ¦       michitaberna.page.spec.ts
+¦   ¦       michitaberna.page.ts
+¦   ¦       
+¦   +---registro
+¦   ¦       registro-routing.module.ts
+¦   ¦       registro.module.ts
+¦   ¦       registro.page.html
+¦   ¦       registro.page.scss
+¦   ¦       registro.page.spec.ts
+¦   ¦       registro.page.ts
+¦   ¦       
+¦   +---reviews
+¦           reviews-routing.module.ts
+¦           reviews.module.ts
+¦           reviews.page.html
+¦           reviews.page.scss
+¦           reviews.page.spec.ts
+¦           reviews.page.ts
+¦           
++---services
+        api.service.ts
+        auth.service.spec.ts
+        auth.service.ts
+        
