@@ -16,15 +16,30 @@
       <div class="categorias-menu">
         <ion-chip>Artículos de papelería</ion-chip>
         <ion-chip>Artículos de cocina</ion-chip>
-
         <ion-chip class="decoraciones-activa">Decoraciones</ion-chip>
+
         <div class="iconos-navegacion">
           <ion-icon name="home-outline" (click)="irHome()"></ion-icon>
           <ion-icon name="cart-outline"></ion-icon>
         </div>
       </div>
 
-      <ion-list>
+      <ion-button expand="block" (click)="obtenerUbicacion()">Obtener ubicación actual</ion-button>
+
+      <div *ngIf="latitude && longitude" class="ubicacion-info">
+        <p>Latitud: {{ latitude }}</p>
+        <p>Longitud: {{ longitude }}</p>
+      </div>
+
+      <div *ngIf="error" class="error-text">
+        <ion-text color="danger">{{ error }}</ion-text>
+      </div>
+
+      <div *ngIf="error && !(latitude && longitude)" class="error-text">
+        <ion-text color="danger">{{ error }}</ion-text>
+      </div>
+
+      <ion-list *ngIf="productos.length > 0">
         <ion-item *ngFor="let producto of productos">
           <ion-thumbnail slot="start">
             <img [src]="producto.imagen" alt="Imagen producto" />
@@ -38,6 +53,7 @@
             <div class="acciones-producto">
               <ion-button size="small" fill="outline" (click)="comprar(producto)">Comprar</ion-button>
               <ion-button size="small" fill="solid" color="secondary" (click)="agregarCarrito(producto)">Agregar</ion-button>
+
               <ion-icon
                 [name]="producto.meGusta ? 'heart' : 'heart-outline'"
                 class="like-icon"
@@ -48,6 +64,11 @@
           </ion-label>
         </ion-item>
       </ion-list>
+
+      <div *ngIf="productos.length === 0 && !error" class="spinner-center">
+        <ion-spinner name="crescent"></ion-spinner>
+        <p>Cargando productos...</p>
+      </div>
     </div>
   </div>
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -24,12 +25,14 @@ export class HomePage implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
-    if (this.router.getCurrentNavigation()?.extras.state) {
-      const state = this.router.getCurrentNavigation()?.extras.state as any;
+    const navState = this.router.getCurrentNavigation()?.extras.state;
+    if (navState) {
+      const state = navState as any;
       this.usuario.usuario = state.usuario || '';
       this.usuario.contrasena = state.contrasena || '';
       this.usuario.correo = state.correo || '';
@@ -48,6 +51,7 @@ export class HomePage implements OnInit {
   }
 
   irCatalogo() {
+    console.log('[HomePage] irCatalogo clicked');
     this.router.navigate(['/catalogo']);
   }
 
@@ -60,8 +64,12 @@ export class HomePage implements OnInit {
       header: '¡Nos vemos pronto!',
       buttons: [{
         text: 'OK',
-        handler: () => {
-          this.router.navigate(['/login']);
+        handler: async () => {
+          await this.authService.logout();
+          console.log('[HomePage] Usuario cerró sesión.');
+          this.router.navigate(['/login']).then(() => {
+            window.location.reload();
+          });
         }
       }]
     });

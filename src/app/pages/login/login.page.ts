@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
+  standalone: false,
 })
 export class LoginPage {
   usuario: string = '';
@@ -21,23 +22,16 @@ export class LoginPage {
   }
 
   async ingresar() {
-    const validUser = /^[a-zA-Z0-9]{3,8}$/.test(this.usuario);
-    const validPass = /^\d{4}$/.test(this.contrasena);
-
-    if (validUser && validPass) {
-      // Simular token de sesión
-      await this.authService.login('fake-token-123');
-
-      const extras: NavigationExtras = {
-        state: {
-          usuario: this.usuario
-        }
-      };
-      this.router.navigate(['/home'], extras);
-    } else {
-      alert('Usuario o contraseña inválidos. Usuario: 3-8 letras/números. Contraseña: 4 dígitos.');
-    }
+  const isAdmin = await this.authService.login(this.usuario, this.contrasena);
+  console.log('[LoginPage] login success:', isAdmin);
+  console.log('[LoginPage] stored token:', await this.authService.getToken());
+  if (isAdmin) {
+    this.router.navigate(['/home'], { state: { usuario: this.usuario } });
+  } else {
+    alert('Credenciales inválidas...');
   }
+}
+
 
   irRegistro() {
     this.router.navigate(['/registro']);

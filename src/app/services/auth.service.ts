@@ -5,32 +5,44 @@ import { Storage } from '@ionic/storage-angular';
   providedIn: 'root'
 })
 export class AuthService {
-
   private _storage: Storage | null = null;
 
-  constructor(private storage: Storage) {
-    this.init();
+  private readonly adminUser = 'MichiTabernaADM';
+  private readonly adminPass = '8989';
+
+  constructor(private storage: Storage) {}
+
+  private async getStorage(): Promise<Storage> {
+    if (!this._storage) {
+      this._storage = await this.storage.create();
+    }
+    return this._storage;
   }
 
-  async init() {
-    const storage = await this.storage.create();
-    this._storage = storage;
+  async login(username: string, password: string): Promise<boolean> {
+    const token = username === this.adminUser && password === this.adminPass ? 'admin_token' : null;
+    if (token) {
+      const storage = await this.getStorage();
+      await storage.set('token', token);
+      return true;
+    }
+    return false;
   }
 
-  async login(token: string) {
-    await this._storage?.set('token', token);
-  }
-
-  async logout() {
-    await this._storage?.remove('token');
+  async logout(): Promise<void> {
+    const storage = await this.getStorage();
+    await storage.remove('token');
   }
 
   async isLoggedIn(): Promise<boolean> {
-    const token = await this._storage?.get('token');
+    const storage = await this.getStorage();
+    const token = await storage.get('token');
+    console.log('[AuthService] Token recuperado:', token);
     return !!token;
   }
 
-  async getToken() {
-    return await this._storage?.get('token');
+  async getToken(): Promise<string | null> {
+    const storage = await this.getStorage();
+    return await storage.get('token');
   }
 }

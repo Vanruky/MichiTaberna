@@ -33,6 +33,11 @@ const routes: Routes = [
   {
     path: 'michitaberna',
     loadChildren: () => import('./pages/michitaberna/michitaberna.module').then(m => m.MichitabernaPageModule)
+  },
+  
+  {
+    path: '**',
+    redirectTo: 'login'
   }
 ];
 

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MichiTaberna</string>
+    <string name="title_activity_main">MichiTaberna</string>
+    <string name="package_name">com.michitaberna.app</string>
+    <string name="custom_url_scheme">com.michitaberna.app</string>
+</resources>
