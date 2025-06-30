@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { AuthService } from '../../services/auth.service';
   standalone: false,
 })
 export class LoginPage {
-  usuario: string = '';
-  contrasena: string = '';
+  usuario = '';
+  contrasena = '';
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -22,19 +22,15 @@ export class LoginPage {
   }
 
   async ingresar() {
-  const isAdmin = await this.authService.login(this.usuario, this.contrasena);
-  console.log('[LoginPage] login success:', isAdmin);
-  console.log('[LoginPage] stored token:', await this.authService.getToken());
-  if (isAdmin) {
-    this.router.navigate(['/home'], { state: { usuario: this.usuario } });
-  } else {
-    alert('Credenciales inválidas...');
+    const isAdmin = await this.authService.login(this.usuario, this.contrasena);
+    if (isAdmin) {
+      this.router.navigate(['/home']);
+    } else {
+      alert('Credenciales inválidas...');
+    }
   }
-}
-
 
   irRegistro() {
     this.router.navigate(['/registro']);
   }
 }
-

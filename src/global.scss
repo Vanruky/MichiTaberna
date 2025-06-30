@@ -57,3 +57,33 @@ ion-icon {
     opacity: 1;
   }
 }
+
+ion-modal.modal-datos::part(content) {
+  background: #ce95e9e7 !important;
+  color: #5a3d66 !important;
+  border-radius: 16px;
+  max-width: 400px;
+  max-height: 70vh;
+  margin: auto;
+  overflow: auto;
+}
+
+ion-modal.modal-datos ion-content.modal-content {
+  --background: #c8a1da !important;
+  color: #5a3d66 !important;
+}
+
+.modal-toolbar {
+  background-color: #7e5fa5 !important;
+  --color: white;
+  font-weight: 700;
+  border-top-right-radius: 16px;
+  box-shadow: 0 2px 8px rgba(161, 62, 62, 0.664);
+}
+
+.modal-content p,
+.modal-content span,
+.modal-content div,
+.modal-content ion-text {
+  color: #5a3d66 !important;
+}

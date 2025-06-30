@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from '../../services/auth.service';
 
@@ -21,28 +21,23 @@ export class HomePage implements OnInit {
   };
 
   mostrarModal = false;
+  presentingElement: HTMLElement | undefined;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
     private alertController: AlertController,
     private authService: AuthService
   ) {}
 
-  ngOnInit() {
-  const navState = this.router.getCurrentNavigation()?.extras.state;
-  if (navState) {
-    const state = navState as any;
-    this.usuario.usuario = state.usuario || '';
-    this.usuario.contrasena = state.contrasena || '';
-    this.usuario.correo = state.correo || '';
-    this.usuario.nombreCompleto = `${state.nombre || ''} ${state.apellido || ''}`.trim();
-    this.usuario.telefono = state.telefono || '';
-    this.usuario.direccion = state.direccion || '';
+  async ngOnInit() {
+    this.presentingElement = document.querySelector('ion-content') as HTMLElement;
   }
-}
 
-  abrirMisDatos() {
+  async abrirMisDatos() {
+    const datos = await this.authService.getUsuarioData();
+    if (datos) {
+      this.usuario = datos;
+    }
     this.mostrarModal = true;
   }
 
@@ -51,7 +46,6 @@ export class HomePage implements OnInit {
   }
 
   irCatalogo() {
-    console.log('[HomePage] irCatalogo clicked');
     this.router.navigate(['/catalogo']);
   }
 
@@ -66,7 +60,6 @@ export class HomePage implements OnInit {
         text: 'OK',
         handler: async () => {
           await this.authService.logout();
-          console.log('[HomePage] Usuario cerró sesión.');
           this.router.navigate(['/login']).then(() => {
             window.location.reload();
           });
