@@ -82,26 +82,30 @@
     </ion-button>
   </div>
 
-  <ion-modal [isOpen]="mostrarModal" (didDismiss)="cerrarModal()">
+  <ion-modal [isOpen]="mostrarModal" (didDismiss)="cerrarModal()" cssClass="modal-datos">
     <ng-template>
       <ion-header>
-        <ion-toolbar class="modal-toolbar">
+        <ion-toolbar>
           <ion-title>Mis Datos</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="cerrarModal()">
+            <ion-button fill="clear" (click)="cerrarModal()">
               <ion-icon name="close-outline"></ion-icon>
             </ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
 
-      <ion-content class="ion-padding modal-content">
-        <p><strong>Usuario:</strong> {{ usuario.usuario }}</p>
-        <p><strong>Contraseña:</strong> ****</p>
-        <p><strong>Correo:</strong> {{ usuario.correo }}</p>
-        <p><strong>Nombre completo:</strong> {{ usuario.nombreCompleto }}</p>
-        <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
-        <p><strong>Dirección:</strong> {{ usuario.direccion }}</p>
+      <ion-content>
+        <div class="datos-contenido">
+          <p><strong>Usuario:</strong> {{ usuario.usuario }}</p>
+          <p><strong>Contraseña:</strong> ****</p>
+          <p><strong>Correo:</strong> {{ usuario.correo }}</p>
+          <p><strong>Nombre completo:</strong> {{ usuario.nombreCompleto }}</p>
+          <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+          <p><strong>Dirección:</strong> {{ usuario.direccion }}</p>
+
+          <ion-button expand="block" (click)="cerrarModal()">Cerrar</ion-button>
+        </div>
       </ion-content>
     </ng-template>
   </ion-modal>

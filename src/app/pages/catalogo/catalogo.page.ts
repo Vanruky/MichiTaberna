@@ -53,9 +53,11 @@ export class CatalogoPage implements OnInit {
     }
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    const storage = await this.authService['getStorage']();
+
     this.apiService.getMealCategories().subscribe({
-      next: (res) => {
+      next: async (res) => {
         const productosAPI = res.categories.map((cat: any) => ({
           titulo: cat.strCategory,
           descripcion: cat.strCategoryDescription?.slice(0, 80) + '...',
@@ -63,12 +65,22 @@ export class CatalogoPage implements OnInit {
           precio: Math.floor(Math.random() * 10000) + 1000,
           meGusta: false
         }));
-        
+
         this.productos = [...this.productos, ...productosAPI];
+
+        await storage.set('productosBackup', productosAPI);
       },
-      error: (err) => {
+      error: async (err) => {
         console.error('Error al obtener datos del API', err);
-        this.error = 'No se pudo cargar el catálogo extra.';
+        this.error = 'No se pudo cargar el catálogo extra. Mostrando datos almacenados.';
+
+        const backup = await storage.get('productosBackup');
+        if (backup) {
+          this.productos = [...this.productos, ...backup];
+          console.log('[CatalogoPage] Datos cargados desde almacenamiento local.');
+        } else {
+          this.error += ' No hay datos guardados previamente.';
+        }
       }
     });
   }

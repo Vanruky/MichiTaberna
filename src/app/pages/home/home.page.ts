@@ -30,17 +30,17 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    const navState = this.router.getCurrentNavigation()?.extras.state;
-    if (navState) {
-      const state = navState as any;
-      this.usuario.usuario = state.usuario || '';
-      this.usuario.contrasena = state.contrasena || '';
-      this.usuario.correo = state.correo || '';
-      this.usuario.nombreCompleto = `${state.nombre || ''} ${state.apellido || ''}`.trim();
-      this.usuario.telefono = state.telefono || '';
-      this.usuario.direccion = state.direccion || '';
-    }
+  const navState = this.router.getCurrentNavigation()?.extras.state;
+  if (navState) {
+    const state = navState as any;
+    this.usuario.usuario = state.usuario || '';
+    this.usuario.contrasena = state.contrasena || '';
+    this.usuario.correo = state.correo || '';
+    this.usuario.nombreCompleto = `${state.nombre || ''} ${state.apellido || ''}`.trim();
+    this.usuario.telefono = state.telefono || '';
+    this.usuario.direccion = state.direccion || '';
   }
+}
 
   abrirMisDatos() {
     this.mostrarModal = true;

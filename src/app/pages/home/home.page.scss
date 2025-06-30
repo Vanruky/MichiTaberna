@@ -188,3 +188,31 @@ ion-content.modal-content {
 .glow-text {
   animation: glow 2.5s ease-in-out infinite;
 }
+
+::ng-deep .modal-datos {
+  --width: 90vw;
+  --max-width: 400px;
+  --height: auto;
+  --max-height: 70vh;
+  margin: auto;
+  --border-radius: 16px;
+  --background: #f5e9fc;
+  box-shadow: 0 8px 24px rgba(90, 61, 102, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .modal-datos ion-content {
+  --background: #f5e9fc;
+  padding: 1rem;
+  font-size: 1rem;
+  overflow-y: auto;
+}
+
+::ng-deep .modal-datos ion-item {
+  background: transparent;
+  font-weight: 600;
+  color: #5a3d66;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
