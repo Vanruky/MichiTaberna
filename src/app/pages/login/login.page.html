@@ -12,28 +12,28 @@
   <div class="main-content">
     <div class="contenido-izquierda">
       <div class="info-section glow-text">
-      Meramente Prrrrrrfecto
+        Meramente Prrrrrrfecto
+      </div>
+
+      <ion-item class="input-slide">
+        <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+        <ion-label position="stacked">Usuario</ion-label><br>
+        <ion-input data-cy="input-usuario" [(ngModel)]="usuario" required></ion-input>
+      </ion-item>
+
+      <ion-item class="input-slide">
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-label position="stacked">Contraseña</ion-label><br>
+        <ion-input data-cy="input-password" [(ngModel)]="contrasena" type="password" required></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" (click)="ingresar()">Ingresar</ion-button>
+
+      <div class="registro-link" (click)="irRegistro()">
+        <ion-icon name="sparkles-outline"></ion-icon>
+        <span><u>Crea tu cuenta gratis</u></span>
+        <ion-icon name="rocket-outline"></ion-icon>
+      </div>
     </div>
-
-    <ion-item class="input-slide">
-      <ion-icon name="person-circle-outline" slot="start"></ion-icon>
-      <ion-label position="stacked">Usuario</ion-label><br>
-      <ion-input [(ngModel)]="usuario" required></ion-input>
-    </ion-item>
-
-    <ion-item class="input-slide">
-      <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
-      <ion-label position="stacked">Contraseña</ion-label><br>
-      <ion-input [(ngModel)]="contrasena" type="password" required></ion-input>
-    </ion-item>
-
-    <ion-button expand="block" (click)="ingresar()">Ingresar</ion-button>
-
-    <div class="registro-link" (click)="irRegistro()">
-      <ion-icon name="sparkles-outline"></ion-icon>
-      <span><u>Crea tu cuenta gratis</u></span>
-      <ion-icon name="rocket-outline"></ion-icon>
-    </div>
-    </div>
-  </div>  
+  </div>
 </ion-content>
