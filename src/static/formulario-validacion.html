@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulario de Validación - MichiTaberna</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1rem 2rem;
+      background: #fafafa;
+      color: #333;
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
+      border-radius: 10px;
+    }
+
+    h1, h2 {
+      color: #d35400;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      font-family: 'Delius', cursive;
+    }
+
+    label {
+      display: block;
+      margin: 1rem 0 0.3rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #5a3d66;
+    }
+
+    input[type=text], input[type=email], select, textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      border: 1.8px solid #d6c1e1;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box;
+    }
+    input[type=text]:focus,
+    input[type=email]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #7e5fa5;
+      outline: none;
+      background-color: #f0e9f9;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+      font-family: inherit;
+    }
+
+    .checkbox-group {
+      margin-bottom: 1.2rem;
+      color: #5a3d66;
+    }
+
+    .checkbox-group label {
+      font-weight: 500;
+      display: inline-block;
+      margin-right: 1.4rem;
+      cursor: default;
+      user-select: none;
+    }
+
+    button {
+      background-color: #7e5fa5;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.8rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+      font-family: 'Delius', cursive;
+      box-shadow: 0 4px 8px rgba(126, 95, 165, 0.4);
+      display: block;
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+    button:hover {
+      background-color: #9c7fc9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Formulario de Validación para Publicación de Aplicación</h1>
+
+  <form id="validationForm">
+    <h2>Información General</h2>
+
+    <label for="appName">Nombre de la Aplicación</label>
+    <input type="text" id="appName" name="appName" value="MichiTaberna" readonly />
+
+    <label for="packageName">Nombre del Paquete</label>
+    <input type="text" id="packageName" name="packageName" value="com.michitaberna.app" readonly />
+
+    <label for="version">Versión Actual</label>
+    <input type="text" id="version" name="version" value="1.0" readonly />
+
+    <label for="minSdk">Compatibilidad Mínima (minSdkVersion)</label>
+    <input type="text" id="minSdk" name="minSdk" value="23 (Android 6.0 Marshmallow)" readonly />
+
+    <label for="targetSdk">Compatibilidad Objetivo (targetSdkVersion)</label>
+    <input type="text" id="targetSdk" name="targetSdk" value="34 (Android 14)" readonly />
+
+    <h2>Permisos Utilizados</h2>
+    <div class="checkbox-group">
+      <label><input type="checkbox" checked disabled /> INTERNET</label>
+      <label><input type="checkbox" checked disabled /> ACCESS_FINE_LOCATION</label>
+      <label><input type="checkbox" checked disabled /> ACCESS_COARSE_LOCATION</label>
+    </div>
+
+    <h2>Firma Digital y Seguridad</h2>
+
+    <label for="keystoreInfo">Alias de la clave usada para firmar</label>
+    <input type="text" id="keystoreInfo" name="keystoreInfo" value="michitaberna-key" readonly />
+
+    <label for="certificateOwner">Propietario del certificado (CN)</label>
+    <input type="text" id="certificateOwner" name="certificateOwner" value="Anamiren Sevilla" readonly />
+
+    <label for="certificateValidity">Validez del certificado</label>
+    <input type="text" id="certificateValidity" name="certificateValidity" value="Desde 13-Jul-2025 hasta 28-Nov-2052" readonly />
+
+    <label for="signingSchemes">Esquemas de firma usados</label>
+    <input type="text" id="signingSchemes" name="signingSchemes" value="V1 (JAR), V2 (APK Signature Scheme v2)" readonly />
+
+    <h2>Checklist de Validación</h2>
+
+    <div class="checkbox-group">
+      <label><input type="checkbox" checked disabled /> APK firmado con clave válida</label>
+      <label><input type="checkbox" checked disabled /> Nombre de paquete único y válido</label>
+      <label><input type="checkbox" checked disabled /> Icono de la aplicación definido</label>
+      <label><input type="checkbox" checked disabled /> Permisos correctamente declarados</label>
+      <label><input type="checkbox" checked disabled /> Proguard y ofuscación configurados</label>
+      <label><input type="checkbox" /> Capturas de pantalla adjuntadas</label>
+      <label><input type="checkbox" /> Video promocional adjuntado (opcional)</label>
+      <label><input type="checkbox" /> Política de privacidad proporcionada</label>
+    </div>
+
+    <h2>Contacto del Desarrollador</h2>
+    <label for="devName">Nombre</label>
+    <input type="text" id="devName" name="devName" value="Anamiren Sevilla" />
+
+    <label for="devEmail">Correo Electrónico</label>
+    <input type="email" id="devEmail" name="devEmail" value="anamiren.sevilla@michitaberna.com" />
+
+    <label for="additionalNotes">Notas adicionales</label>
+    <textarea id="additionalNotes" name="additionalNotes" rows="4" placeholder="Agregar comentarios o detalles adicionales..."></textarea>
+
+    <button type="submit">Enviar Validación</button>
+  </form>
+
+  <script>
+    document.getElementById('validationForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Formulario enviado con éxito. ¡Validación registrada!');
+
+    });
+  </script>
+</body>
+</html>
