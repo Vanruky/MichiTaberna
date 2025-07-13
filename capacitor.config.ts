@@ -1,8 +1,8 @@
 const config = {
-  appId: 'com.michitaberna.app', 
-  appName: 'MichiTaberna',           
-  webDir: 'www',                     
-  bundledWebRuntime: false
-};
+  "appId": "com.rosev.michitaberna",
+  "appName": "MichiTaberna",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}
 
 export default config;

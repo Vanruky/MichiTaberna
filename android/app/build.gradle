@@ -18,10 +18,10 @@ android {
 
     signingConfigs {
         release {
-            keyAlias 'my-key-alias'
-            keyPassword '898989'
-            storeFile file('my-release-key.jks')
-            storePassword '898989'
+            storeFile file("C:/Users/Rosev/Documents/MichiTabernaKey/MichiTaberna.keystore")
+            storePassword "898989"
+            keyAlias "michitaberna-key"
+            keyPassword "898989"
         }
     }
 
